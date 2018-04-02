@@ -7,7 +7,7 @@
 	<title>Sistema Imobiliária</title>
 	<!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet">
 </head>
 <body>
 	<h1>Olá, <br/> Bem-vindo à Imobiliária 5º Semestre - Noturno</h1>
@@ -21,9 +21,9 @@
       <!-- Criação das abas -->
       <!-- <ul class="nav nav-pills" role="tablist"> -->
       <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#info" role="tab" data-toggle="tab">Estado</a></li>
-        <li><a href="#avaliacoes" role="tab" data-toggle="tab">Avaliações</a></li>
-        <li><a href="#compre" role="tab" data-toggle="tab">Compre também</a></li>
+        <li class="active"><a href="#estado" role="tab" data-toggle="tab">Estado</a></li>
+        <li><a href="#cidade" role="tab" data-toggle="tab">Cidade</a></li>
+        <li><a href="#bairro" role="tab" data-toggle="tab">Bairro</a></li>
       </ul>
 
       <div class="tab-content">
