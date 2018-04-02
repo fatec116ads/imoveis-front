@@ -1,28 +1,12 @@
 <?php 
 require_once "vendor/autoload.php";
 
-require_once "model/estado.php";
+require_once "utils/RestApi.php";
 
-require_once "utils/restApi.php";
-$estados = enviarRequisicao('estado/listar', null)->body;
+require_once "inc/cabecalho.php"; 
 
-
-foreach($estados as $estado)
-{
-
-	print_r($estado->uf.' - '.$estado->nomeEstado);
-}
-
-
+require_once "abas/lista-estado.php"; 
 ?>
 
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Lista de Estados</title>
-</head>
-<body>
-Bem-vindo
-</body>
-</html>
+<?php require_once "inc/rodape.php"; ?>
