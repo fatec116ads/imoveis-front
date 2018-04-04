@@ -6,6 +6,8 @@ require_once "utils/RestApi.php";
 require_once "inc/cabecalho.php"; 
 
 require_once "estado/lista-estado.php"; 
+
+require_once "bairro/lista-bairro.php"; 
 ?>
 
 
