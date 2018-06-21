@@ -1,11 +1,11 @@
 <?php 
-	// chamada do microsserviço java para listar todos os estados
-	$estados = enviarRequisicaoPost('estado/listar', null)->body;
+	// chamada do microsserviço java para listar todos as cidades
+	$cidades = enviarRequisicaoPost('cidade/listar', null)->body;
 ?>
 <div class="tab-pane active" role="tabpanel" id="cidade">
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
-			<!-- Link para o botão que abre o modal de inclusão de novo Estado -->
+			<!-- Link para o botão que abre o modal de inclusão de nova Cidade -->
 			<a href="#modalIncluirCidade" data-toggle="modal"
 				data-target="#modalIncluirCidade">
 				<button class="btn btn-success" style="width: 100%">+
@@ -88,7 +88,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="estado/alterar-cidade.php" id="form-cidade"
+										<form action="cidade/alterar-cidade.php" id="form-cidade"
 											method="Post">
 											<div class="form-group">
 												<label>Código Cidade</label> <input name cdCidade="sigla" type="text" disabled
@@ -98,7 +98,7 @@
 											<div class="form-group">
 												<label>Nome:</label> <input name="nomeCidade" type="text"
 													class="form-control" id="inputNome" placeholder="Nome"
-													value="<?php echo $estado->nomeCidade; ?>" /> <input
+													value="<?php echo $cidade->nomeCidade; ?>" /> <input
 													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
 											</div>
 											<div class="text-center">
@@ -169,7 +169,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="estado/excluir-cidade.php" id="form-cidade"
+										<form action="cidade/excluir-cidade.php" id="form-cidade"
 											method="Post">
 											<div class="form-group">
 												<div class="text-center">
@@ -183,7 +183,7 @@
 												</div>
 												<input name="nomeCidade" type="hidden" class="form-control"
 													id="inputNome" placeholder="Nome"
-													value="<?php echo $estado->nomeCidade; ?>" /> <input
+													value="<?php echo $cidade->nomeCidade; ?>" /> <input
 													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
 											</div>
 										</form>
