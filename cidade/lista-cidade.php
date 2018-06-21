@@ -1,4 +1,4 @@
-<?php 
+uf<?php 
 	// chamada do microsserviço java para listar todos as cidades
 	$cidades = enviarRequisicaoPost('cidade/listar', null)->body;
 ?>
@@ -31,7 +31,7 @@
 									class="form-control" id="inputCdCidade" placeholder="Código Cidade" />
 							</div>
 							<div class="form-group">
-								<label>Nome:</label> <input name="nmCidade" type="text"
+								<label>Nome:</label> <input name="nomeCidade" type="text"
 									class="form-control" id="inputNomeCidade" placeholder="Nome" />
 							</div>
 							<div class="text-center">
@@ -61,23 +61,23 @@
 				<?php foreach($cidade as $cidade) { ?>
 				<tr>
 					<td>
-						<?php echo $cidade->uf; ?>
+						<?php echo $cidade->cdCidade; ?>
 					</td>
 					<td>
-						<?php echo $cidade->nomeCidade; ?>
+						<?php echo $cidade->nmCidade; ?>
 					</td>
 					<!-- Botão de Editar Cidade -->
 					<td align="center"><a
-						href="#modalEditarCidade<?php print_r($cidade->uf); ?>"
+						href="#modalEditarCidade<?php print_r($cidade->cdCidade); ?>"
 						data-toggle="modal"
-						data-target="#modalEditarCidade<?php print_r($cidade->uf); ?>"> <span
+						data-target="#modalEditarCidade<?php print_r($cidade->cdCidade); ?>"> <span
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
-					<!-- FIM Lista de todos os cidade -->
+					<!-- FIM Lista de todos as cidades -->
 
 					<!-- INICIO Modal de Edição da cidade --> 
 						<div class="modal fade "
-							id="modalEditarCidade<?php print_r($cidade->uf); ?>">
+							id="modalEditarCidade<?php print_r($cidade->cdCidade); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -93,13 +93,13 @@
 											<div class="form-group">
 												<label>Código Cidade</label> <input name cdCidade="sigla" type="text" disabled
 													class="form-control" id="inputUf" placeholder="UF"
-													value="<?php echo $cidade->uf; ?>" />
+													value="<?php echo $cidade->cdCidade; ?>" />
 											</div>
 											<div class="form-group">
 												<label>Nome:</label> <input name="nomeCidade" type="text"
 													class="form-control" id="inputNome" placeholder="Nome"
-													value="<?php echo $cidade->nomeCidade; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
+													value="<?php echo $cidade->nmCidade; ?>" /> <input
+													type="hidden" name="cdCidade" value="<?php echo $cidade->cdCidade; ?>" />
 											</div>
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
@@ -112,14 +112,14 @@
 					<!-- FIM Modal de Edição de Cidade -->
 
 					<!-- Botão de Consulta Cidade -->
-					<a href="#modalConsultar<?php print_r($cidade->uf); ?>"
+					<a href="#modalConsultar<?php print_r($cidade->cdCidade); ?>"
 					data-toggle="modal"
-					data-target="#modalConsultar<?php print_r($cidade->uf); ?>"> 
+					data-target="#modalConsultar<?php print_r($cidade->cdCidade); ?>"> 
 					<span class="glyphicon glyphicon-search"></span>
 					</a>
 					<!-- INICIO Modal Consulta de cidade -->	
 						<div class="modal fade "
-							id="modalConsultar<?php print_r($cidade->uf); ?>">
+							id="modalConsultar<?php print_r($cidade->cdCidade); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -131,11 +131,11 @@
 									</div>
 									<div class="modal-body">
 										<div class="form-group">
-											<label>UF</label> <span> <?php print_r($cidade->uf); ?>
+											<label>UF</label> <span> <?php print_r($cidade->cdCidade); ?>
 											</span>
 										</div>
 										<div class="form-group">
-											<label>Nome:</label> <span> <?php print_r($cidade->nomeCidade); ?>
+											<label>Nome:</label> <span> <?php print_r($cidade->nmCidade); ?>
 											</span>
 										</div>
 
@@ -146,21 +146,21 @@
 						<!-- FIM Modal de Consulta de Cidade -->
 
 					<!-- Botão de Exclusão Cidade -->	
-					<a href="#modalExcluir<?php print_r($cidade->uf); ?>"
+					<a href="#modalExcluir<?php print_r($cidade->cdCidade); ?>"
 					data-toggle="modal"
-					data-target="#modalExcluir<?php print_r($cidade->uf); ?>"> 
+					data-target="#modalExcluir<?php print_r($cidade->cdCidade); ?>"> 
 					<span class="glyphicon glyphicon-remove"></span>
 					</a>
 					<!-- INICIO Modal de Exclusão de Cidade -->
 						<div class="modal fade "
-							id="modalExcluir<?php print_r($cidade->uf); ?>">
+							id="modalExcluir<?php print_r($cidade->cdCidade); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h3 class="modal-title" id="exampleModalLabel">Cidade</h3>
 										<h5 class="modal-title" id="exampleModalLabel">
-											Você tem certeza que deseja excluir o cidade
-											<?php echo $cidade->uf; ?>
+											Você tem certeza que deseja excluir a cidade
+											<?php echo $cidade->cdCidade; ?>
 											?
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
@@ -183,8 +183,8 @@
 												</div>
 												<input name="nomeCidade" type="hidden" class="form-control"
 													id="inputNome" placeholder="Nome"
-													value="<?php echo $cidade->nomeCidade; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
+													value="<?php echo $cidade->nmCidade; ?>" /> <input
+													type="hidden" name="cdCidade" value="<?php echo $cidade->cdCidade; ?>" />
 											</div>
 										</form>
 									</div>
