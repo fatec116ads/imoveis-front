@@ -6,7 +6,7 @@
 
 	$response = enviarRequisicaoPost('cidade/delete', $_POST);
 
-	header('Location: /imoveis/index.php');
+	header('Location: /imoveis-front/index.php');
 
  ?>
 

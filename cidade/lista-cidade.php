@@ -1,8 +1,8 @@
-uf<?php 
+<?php 
 	// chamada do microsserviço java para listar todos as cidades
 	$cidades = enviarRequisicaoPost('cidade/listar', null)->body;
 ?>
-<div class="tab-pane active" role="tabpanel" id="cidade">
+<div class="tab-pane" role="tabpanel" id="cidade">
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
 			<!-- Link para o botão que abre o modal de inclusão de nova Cidade -->
@@ -31,7 +31,7 @@ uf<?php
 									class="form-control" id="inputCdCidade" placeholder="Código Cidade" />
 							</div>
 							<div class="form-group">
-								<label>Nome:</label> <input name="nomeCidade" type="text"
+								<label>Nome:</label> <input name="nmCidade" type="text"
 									class="form-control" id="inputNomeCidade" placeholder="Nome" />
 							</div>
 							<div class="text-center">
@@ -58,7 +58,7 @@ uf<?php
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($cidade as $cidade) { ?>
+				<?php foreach($cidades as $cidade) { ?>
 				<tr>
 					<td>
 						<?php echo $cidade->cdCidade; ?>
@@ -91,12 +91,12 @@ uf<?php
 										<form action="cidade/alterar-cidade.php" id="form-cidade"
 											method="Post">
 											<div class="form-group">
-												<label>Código Cidade</label> <input name cdCidade="sigla" type="text" disabled
+												<label>Código Cidade</label> <input name="cdCidade" type="text" disabled
 													class="form-control" id="inputUf" placeholder="UF"
 													value="<?php echo $cidade->cdCidade; ?>" />
 											</div>
 											<div class="form-group">
-												<label>Nome:</label> <input name="nomeCidade" type="text"
+												<label>Nome:</label> <input name="nmCidade" type="text"
 													class="form-control" id="inputNome" placeholder="Nome"
 													value="<?php echo $cidade->nmCidade; ?>" /> <input
 													type="hidden" name="cdCidade" value="<?php echo $cidade->cdCidade; ?>" />
@@ -181,7 +181,7 @@ uf<?php
 														<span aria-hidden="true">Não</span>
 													</button>
 												</div>
-												<input name="nomeCidade" type="hidden" class="form-control"
+												<input name="nmCidade" type="hidden" class="form-control"
 													id="inputNome" placeholder="Nome"
 													value="<?php echo $cidade->nmCidade; ?>" /> <input
 													type="hidden" name="cdCidade" value="<?php echo $cidade->cdCidade; ?>" />
