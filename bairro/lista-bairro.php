@@ -1,5 +1,5 @@
 <?php 
-	// chamada do microsserviço java para listar todos os estados
+	// chamada do microsserviço java para listar todos os bairros
 	$bairros = enviarRequisicaoPost('bairro/listar', null)->body;
 ?>
 <div class="tab-pane active" role="tabpanel" id="bairro">

@@ -4,7 +4,7 @@
 
 	$obj = json_encode($_POST);
 
-	$response = enviarRequisicaoPost('estado/update', $_POST);
+	$response = enviarRequisicaoPost('bairro/update', $_POST);
 
 	header('Location: /imoveis/index.php');
 
