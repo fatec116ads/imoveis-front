@@ -1,38 +1,38 @@
 <?php 
-	// chamada do microsserviço java para listar todos os estados
-	$estados = enviarRequisicaoPost('estado/listar', null)->body;
+	// chamada do microsserviço java para listar todos as cidades
+	$cidades = enviarRequisicaoPost('cidade/listar', null)->body;
 ?>
-<div class="tab-pane active" role="tabpanel" id="estado">
+<div class="tab-pane active" role="tabpanel" id="cidade">
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
-			<!-- Link para o botão que abre o modal de inclusão de novo Estado -->
-			<a href="#modalIncluirEstado" data-toggle="modal"
-				data-target="#modalIncluirEstado">
+			<!-- Link para o botão que abre o modal de inclusão de nova Cidade -->
+			<a href="#modalIncluirCidade" data-toggle="modal"
+				data-target="#modalIncluirCidade">
 				<button class="btn btn-success" style="width: 100%">+
-					Inserir novo Estado</button>
+					Inserir nova Cidade</button>
 			</a>
 		</div>
-		<!-- INICIO modal de inclusão de Estado -->
-		<div class="modal fade " id="modalIncluirEstado">
+		<!-- INICIO modal de inclusão de Cidade -->
+		<div class="modal fade " id="modalIncluirCidade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLabel">Estado</h3>
+						<h3 class="modal-title" id="exampleModalLabel">Cidade</h3>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<form action="estado/incluir-estado.php" id="form-estado"
+						<form action="cidade/incluir-cidade.php" id="form-cidade"
 							method="Post">
 							<div class="form-group">
-								<label>UF</label> <input name="uf" type="text"
-									class="form-control" id="inputUf" placeholder="UF" />
+								<label>Código Cidade</label> <input name="cdCidade" type="text"
+									class="form-control" id="inputCdCidade" placeholder="Código Cidade" />
 							</div>
 							<div class="form-group">
-								<label>Nome:</label> <input name="nomeEstado" type="text"
-									class="form-control" id="inputNome" placeholder="Nome" />
+								<label>Nome:</label> <input name="nmCidade" type="text"
+									class="form-control" id="inputNomeCidade" placeholder="Nome" />
 							</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -42,64 +42,64 @@
 				</div>
 			</div>
 		</div>
-		<!-- FIM modal de inclusão de Estado -->
+		<!-- FIM modal de inclusão da Cidade -->
 
-		<!-- INICIO Lista de todos os estados -->
+		<!-- INICIO Lista de todos as cidades -->
 		<div class="page-header">
-			<h1>Estados:</h1>
+			<h1>Cidades:</h1>
 		</div>
 		<table
 			class="table table-striped table-bordered table-hover table-condensed">
 			<thead>
 				<tr>
-					<th>Sigla</th>
+					<th>Código Cidade</th>
 					<th>Nome</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php foreach($estados as $estado) { ?>
+				<?php foreach($cidade as $cidade) { ?>
 				<tr>
 					<td>
-						<?php echo $estado->uf; ?>
+						<?php echo $cidade->uf; ?>
 					</td>
 					<td>
-						<?php echo $estado->nomeEstado; ?>
+						<?php echo $cidade->nomeCidade; ?>
 					</td>
-					<!-- Botão de Editar Estado -->
+					<!-- Botão de Editar Cidade -->
 					<td align="center"><a
-						href="#modalEditarEstado<?php print_r($estado->uf); ?>"
+						href="#modalEditarCidade<?php print_r($cidade->uf); ?>"
 						data-toggle="modal"
-						data-target="#modalEditarEstado<?php print_r($estado->uf); ?>"> <span
+						data-target="#modalEditarCidade<?php print_r($cidade->uf); ?>"> <span
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
-					<!-- FIM Lista de todos os estados -->
+					<!-- FIM Lista de todos os cidade -->
 
-					<!-- INICIO Modal de Edição de Estado --> 
+					<!-- INICIO Modal de Edição da cidade --> 
 						<div class="modal fade "
-							id="modalEditarEstado<?php print_r($estado->uf); ?>">
+							id="modalEditarCidade<?php print_r($cidade->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h3 class="modal-title" id="exampleModalLabel">Estado</h3>
+										<h3 class="modal-title" id="exampleModalLabel">Cidade</h3>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="estado/alterar-estado.php" id="form-estado"
+										<form action="cidade/alterar-cidade.php" id="form-cidade"
 											method="Post">
 											<div class="form-group">
-												<label>UF</label> <input name="sigla" type="text" disabled
+												<label>Código Cidade</label> <input name cdCidade="sigla" type="text" disabled
 													class="form-control" id="inputUf" placeholder="UF"
-													value="<?php echo $estado->uf; ?>" />
+													value="<?php echo $cidade->uf; ?>" />
 											</div>
 											<div class="form-group">
-												<label>Nome:</label> <input name="nomeEstado" type="text"
+												<label>Nome:</label> <input name="nomeCidade" type="text"
 													class="form-control" id="inputNome" placeholder="Nome"
-													value="<?php echo $estado->nomeEstado; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $estado->uf; ?>" />
+													value="<?php echo $cidade->nomeCidade; ?>" /> <input
+													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
 											</div>
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
@@ -109,21 +109,21 @@
 								</div>
 							</div>
 						</div> 
-					<!-- FIM Modal de Edição de Estado -->
+					<!-- FIM Modal de Edição de Cidade -->
 
-					<!-- Botão de Consulta Estado -->
-					<a href="#modalConsultarEstado<?php print_r($estado->uf); ?>"
+					<!-- Botão de Consulta Cidade -->
+					<a href="#modalConsultar<?php print_r($cidade->uf); ?>"
 					data-toggle="modal"
-					data-target="#modalConsultarEstado<?php print_r($estado->uf); ?>"> 
+					data-target="#modalConsultar<?php print_r($cidade->uf); ?>"> 
 					<span class="glyphicon glyphicon-search"></span>
 					</a>
-					<!-- INICIO Modal Consulta de Estado -->	
+					<!-- INICIO Modal Consulta de cidade -->	
 						<div class="modal fade "
-							id="modalConsultarEstado<?php print_r($estado->uf); ?>">
+							id="modalConsultar<?php print_r($cidade->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h3 class="modal-title" id="exampleModalLabel">Estado</h3>
+										<h3 class="modal-title" id="exampleModalLabel">Cidade</h3>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -131,11 +131,11 @@
 									</div>
 									<div class="modal-body">
 										<div class="form-group">
-											<label>UF</label> <span> <?php print_r($estado->uf); ?>
+											<label>UF</label> <span> <?php print_r($cidade->uf); ?>
 											</span>
 										</div>
 										<div class="form-group">
-											<label>Nome:</label> <span> <?php print_r($estado->nomeEstado); ?>
+											<label>Nome:</label> <span> <?php print_r($cidade->nomeCidade); ?>
 											</span>
 										</div>
 
@@ -143,24 +143,24 @@
 								</div>
 							</div>
 						</div> 
-						<!-- FIM Modal de Consulta de Estado -->
+						<!-- FIM Modal de Consulta de Cidade -->
 
-					<!-- Botão de Exclusão Estado -->	
-					<a href="#modalExcluirEstado<?php print_r($estado->uf); ?>"
+					<!-- Botão de Exclusão Cidade -->	
+					<a href="#modalExcluir<?php print_r($cidade->uf); ?>"
 					data-toggle="modal"
-					data-target="#modalExcluirEstado<?php print_r($estado->uf); ?>"> 
+					data-target="#modalExcluir<?php print_r($cidade->uf); ?>"> 
 					<span class="glyphicon glyphicon-remove"></span>
 					</a>
-					<!-- INICIO Modal de Exclusão de Estado -->
+					<!-- INICIO Modal de Exclusão de Cidade -->
 						<div class="modal fade "
-							id="modalExcluirEstado<?php print_r($estado->uf); ?>">
+							id="modalExcluir<?php print_r($cidade->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h3 class="modal-title" id="exampleModalLabel">Estado</h3>
+										<h3 class="modal-title" id="exampleModalLabel">Cidade</h3>
 										<h5 class="modal-title" id="exampleModalLabel">
-											Você tem certeza que deseja excluir o estado
-											<?php echo $estado->uf; ?>
+											Você tem certeza que deseja excluir o cidade
+											<?php echo $cidade->uf; ?>
 											?
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
@@ -169,7 +169,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="estado/excluir-estado.php" id="form-estado"
+										<form action="cidade/excluir-cidade.php" id="form-cidade"
 											method="Post">
 											<div class="form-group">
 												<div class="text-center">
@@ -181,17 +181,17 @@
 														<span aria-hidden="true">Não</span>
 													</button>
 												</div>
-												<input name="nomeEstado" type="hidden" class="form-control"
+												<input name="nomeCidade" type="hidden" class="form-control"
 													id="inputNome" placeholder="Nome"
-													value="<?php echo $estado->nomeEstado; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $estado->uf; ?>" />
+													value="<?php echo $cidade->nomeCidade; ?>" /> <input
+													type="hidden" name="uf" value="<?php echo $cidade->uf; ?>" />
 											</div>
 										</form>
 									</div>
 								</div>
 							</div>
 						</div>
-					<!-- FIM Modal de Exclusão de Estado -->
+					<!-- FIM Modal de Exclusão de Cidade -->
 					</td>
 				</tr>
 				<?php } ?>

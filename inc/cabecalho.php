@@ -25,7 +25,7 @@
         	<a href="#estado" role="tab" data-toggle="tab">Estado</a>
         </li>
         <li><a href="#cidade" role="tab" data-toggle="tab">Cidade</a></li>
-        <li><a href="#bairro" role="tab" data-toggle="tab">Bairro</a></li>
+       
       </ul>
 
       <div class="tab-content">
