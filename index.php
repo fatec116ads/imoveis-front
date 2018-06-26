@@ -7,7 +7,7 @@ require_once "inc/cabecalho.php";
 
 require_once "estado/lista-estado.php"; 
 
-// meu pai
+require_once "cidade/lista-cidade.php"; 
 
 ?>
 
