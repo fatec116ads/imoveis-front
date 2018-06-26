@@ -75,6 +75,7 @@
 					</a>
 					<!-- FIM Lista de todos os compradores -->
 
+
 					<!-- INICIO Modal de Edição de Comprador --> 
 						<div class="modal fade "
 							id="modalEditarComprador<?php print_r($comprador->uf); ?>">
@@ -120,6 +121,7 @@
 					<!-- INICIO Modal Consulta de Comprador -->	
 						<div class="modal fade "
 							id="modalConsultarComprador<?php print_r($comprador->uf); ?>">
+
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -131,6 +133,7 @@
 									</div>
 									<div class="modal-body">
 										<div class="form-group">
+
 											<label>UF</label> <span> <?php print_r($comprador->uf); ?>
 											</span>
 										</div>
@@ -153,15 +156,17 @@
 					</a>
 					<!-- INICIO Modal de Exclusão de Comprador -->
 						<div class="modal fade "
+
 							id="modalExcluirComprador<?php print_r($comprador->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h3 class="modal-title" id="exampleModalLabel">Comprador</h3>
 										<h5 class="modal-title" id="exampleModalLabel">
+
 											Você tem certeza que deseja excluir o comprador
 											<?php echo $comprador->uf; ?>
-											?
+
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
@@ -181,6 +186,7 @@
 														<span aria-hidden="true">Não</span>
 													</button>
 												</div>
+
 												<input name="nomeComprador" type="hidden" class="form-control"
 													id="inputNome" placeholder="Nome"
 													value="<?php echo $comprador->nomeComprador; ?>" /> <input
