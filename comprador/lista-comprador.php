@@ -2,7 +2,7 @@
 	// chamada do microsserviço java para listar todos os compradores
 	$compradores = enviarRequisicaoPost('comprador/listar', null)->body;
 ?>
-<div class="tab-pane active" role="tabpanel" id="comprador">
+<div class="tab-pane" role="tabpanel" id="comprador">
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
 			<!-- Link para o botão que abre o modal de inclusão de novo comprador -->
@@ -26,14 +26,31 @@
 					<div class="modal-body">
 						<form action="comprador/incluir-comprador.php" id="form-comprador"
 							method="Post">
-							<div class="form-group">
-								<label>UF</label> <input name="uf" type="text"
-									class="form-control" id="inputUf" placeholder="UF" />
-							</div>
-							<div class="form-group">
-								<label>Nome:</label> <input name="nomeComprador" type="text"
-									class="form-control" id="inputNome" placeholder="Nome" />
-							</div>
+								<div class="form-group">
+												<label>Código Comprador</label> <input name="cdComprador" type="text" 
+													class="form-control" id="inputcdComprador" placeholder="cdComprador"
+													 />
+											</div>
+											<div class="form-group">
+												<label>Nome Comprador:</label> <input name="nmComprador" type="text"
+													class="form-control" id="inputNome" placeholder="ome Comprador"
+													 /> 
+											</div>
+											<div class="form-group">
+												<label>Endereço Comprador:</label> <input name="nmEndereco" type="text"
+													class="form-control" id="inputNome" placeholder="ndereço Comprador"
+													 /> 
+											</div>
+											<div class="form-group">
+												<label>CPF Comprador:</label> <input name="nrCpfComprador" type="text"
+													class="form-control" id="inputNome" placeholder="CPF Comprador"
+													 /> 
+											</div>
+											<div class="form-group">
+												<label>Telefone Comprador:</label> <input name="telComprador" type="text"
+													class="form-control" id="inputNome" placeholder="Telefone Comprador"
+													 /> 
+											</div>
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">Cadastrar</button>
 							</div>
@@ -52,8 +69,11 @@
 			class="table table-striped table-bordered table-hover table-condensed">
 			<thead>
 				<tr>
-					<th>Sigla</th>
+					<th>Id</th>
 					<th>Nome</th>
+					<th>Endereço</th>
+					<th>CPF</th>
+					<th>Telefone</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -61,16 +81,25 @@
 				<?php foreach($compradores as $comprador) { ?>
 				<tr>
 					<td>
-						<?php echo $comprador->uf; ?>
+						<?php echo $comprador->cdComprador; ?>
 					</td>
 					<td>
-						<?php echo $comprador->nomeComprador; ?>
+						<?php echo $comprador->nmComprador; ?>
+					</td>
+					<td>
+						<?php echo $comprador->nmEndereco; ?>
+					</td>
+					<td>
+						<?php echo $comprador->nrCpfComprador; ?>
+					</td>
+					<td>
+						<?php echo $comprador->telComprador; ?>
 					</td>
 					<!-- Botão de Editar Comprador -->
 					<td align="center"><a
-						href="#modalEditarComprador<?php print_r($comprador->uf); ?>"
+						href="#modalEditarComprador<?php print_r($comprador->cdComprador); ?>"
 						data-toggle="modal"
-						data-target="#modalEditarComprador<?php print_r($comprador->uf); ?>"> <span
+						data-target="#modalEditarComprador<?php print_r($comprador->cdComprador); ?>"> <span
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
 					<!-- FIM Lista de todos os compradores -->
@@ -78,7 +107,7 @@
 
 					<!-- INICIO Modal de Edição de Comprador --> 
 						<div class="modal fade "
-							id="modalEditarComprador<?php print_r($comprador->uf); ?>">
+							id="modalEditarComprador<?php print_r($comprador->cdComprador); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -92,16 +121,32 @@
 										<form action="comprador/alterar-comprador.php" id="form-comprador"
 											method="Post">
 											<div class="form-group">
-												<label>UF</label> <input name="sigla" type="text" disabled
-													class="form-control" id="inputUf" placeholder="UF"
-													value="<?php echo $comprador->uf; ?>" />
+												<label>Código Comprador</label> <input name="cdComprador" type="text" disabled
+													class="form-control" id="inputcdComprador" placeholder="cdComprador"
+													value="<?php echo $comprador->cdComprador; ?>" />
 											</div>
 											<div class="form-group">
-												<label>Nome:</label> <input name="nomeComprador" type="text"
-													class="form-control" id="inputNome" placeholder="Nome"
-													value="<?php echo $comprador->nomeComprador; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $comprador->uf; ?>" />
+												<label>Nome Comprador:</label> <input name="nmComprador" type="text"
+													class="form-control" id="inputNome" placeholder="Nome Comprador"
+													value="<?php echo $comprador->nmComprador; ?>" /> 
 											</div>
+											<div class="form-group">
+												<label>Endereço Comprador:</label> <input name="nmEndereco" type="text"
+													class="form-control" id="inputNome" placeholder="Nome"
+													value="<?php echo $comprador->nmEndereco; ?>" /> 
+											</div>
+											<div class="form-group">
+												<label>CPF Comprador:</label> <input name="nrCpfComprador" type="text"
+													class="form-control" id="inputNome" placeholder="Nome"
+													value="<?php echo $comprador->nrCpfComprador; ?>" />
+											</div>
+											<div class="form-group">
+												<label>Telefone Comprador:</label> <input name="telComprador" type="text"
+													class="form-control" id="inputNome" placeholder="Nome"
+													value="<?php echo $comprador->telComprador; ?>" /> 
+											</div>
+											<input
+													type="hidden" name="cdComprador" value="<?php echo $comprador->cdComprador; ?>" />
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
 											</div>
@@ -113,14 +158,14 @@
 					<!-- FIM Modal de Edição de Comprador -->
 
 					<!-- Botão de Consulta Comprador -->
-					<a href="#modalConsultarComprador<?php print_r($comprador->uf); ?>"
+					<a href="#modalConsultarComprador<?php print_r($comprador->cdComprador); ?>"
 					data-toggle="modal"
-					data-target="#modalConsultarComprador<?php print_r($comprador->uf); ?>"> 
+					data-target="#modalConsultarComprador<?php print_r($comprador->cdComprador); ?>"> 
 					<span class="glyphicon glyphicon-search"></span>
 					</a>
 					<!-- INICIO Modal Consulta de Comprador -->	
 						<div class="modal fade "
-							id="modalConsultarComprador<?php print_r($comprador->uf); ?>">
+							id="modalConsultarComprador<?php print_r($comprador->cdComprador); ?>">
 
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -134,11 +179,11 @@
 									<div class="modal-body">
 										<div class="form-group">
 
-											<label>UF</label> <span> <?php print_r($comprador->uf); ?>
+											<label>Código Comprador:</label> <span> <?php print_r($comprador->cdComprador); ?>
 											</span>
 										</div>
 										<div class="form-group">
-											<label>Nome:</label> <span> <?php print_r($comprador->nomeComprador); ?>
+											<label>Nome:</label> <span> <?php print_r($comprador->nmComprador); ?>
 											</span>
 										</div>
 
@@ -149,15 +194,15 @@
 						<!-- FIM Modal de Consulta de Comprador -->
 
 					<!-- Botão de Exclusão Comprador -->	
-					<a href="#modalExcluirComprador<?php print_r($comprador->uf); ?>"
+					<a href="#modalExcluirComprador<?php print_r($comprador->cdComprador); ?>"
 					data-toggle="modal"
-					data-target="#modalExcluirComprador<?php print_r($comprador->uf); ?>"> 
+					data-target="#modalExcluirComprador<?php print_r($comprador->cdComprador); ?>"> 
 					<span class="glyphicon glyphicon-remove"></span>
 					</a>
 					<!-- INICIO Modal de Exclusão de Comprador -->
 						<div class="modal fade "
 
-							id="modalExcluirComprador<?php print_r($comprador->uf); ?>">
+							id="modalExcluirComprador<?php print_r($comprador->cdComprador); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -165,7 +210,7 @@
 										<h5 class="modal-title" id="exampleModalLabel">
 
 											Você tem certeza que deseja excluir o comprador
-											<?php echo $comprador->uf; ?>
+											<?php echo $comprador->cdComprador; ?>
 
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
@@ -174,7 +219,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="comprador/excluir-comprador.php" id="form-comprador"
+										<form action="comprador/excluir-comprador.php" id="form-comprador-exclusao"
 											method="Post">
 											<div class="form-group">
 												<div class="text-center">
@@ -187,10 +232,9 @@
 													</button>
 												</div>
 
-												<input name="nomeComprador" type="hidden" class="form-control"
-													id="inputNome" placeholder="Nome"
-													value="<?php echo $comprador->nomeComprador; ?>" /> <input
-													type="hidden" name="uf" value="<?php echo $comprador->uf; ?>" />
+												<input name="cdComprador" type="hidden" class="form-control"
+													id="inputCdComprador"
+													value="<?php echo $comprador->cdComprador; ?>" /> 
 											</div>
 										</form>
 									</div>

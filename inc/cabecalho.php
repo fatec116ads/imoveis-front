@@ -25,7 +25,11 @@
         	<a href="#estado" role="tab" data-toggle="tab">Estado</a>
         </li>
         <li><a href="#cidade" role="tab" data-toggle="tab">Cidade</a></li>
-       
+       <li><a href="#bairro" role="tab" data-toggle="tab">Bairro</a></li>
+	   <li><a href="#comprador" role="tab" data-toggle="tab">Comprador</a></li>
+	   
+	   <li><a href="#imovel" role="tab" data-toggle="tab">Imóvel</a></li>
+	   
       </ul>
 
       <div class="tab-content">

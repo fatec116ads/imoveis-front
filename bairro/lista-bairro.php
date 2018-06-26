@@ -2,7 +2,7 @@
 	// chamada do microsserviço java para listar todos os bairros
 	$bairros = enviarRequisicaoPost('bairro/listar', null)->body;
 ?>
-<div class="tab-pane active" role="tabpanel" id="bairro">
+<div class="tab-pane" role="tabpanel" id="bairro">
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
 			<!-- Link para o botão que abre o modal de inclusão de novo Bairro -->

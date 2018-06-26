@@ -9,6 +9,13 @@ require_once "estado/lista-estado.php";
 
 require_once "cidade/lista-cidade.php"; 
 
+require_once "bairro/lista-bairro.php";
+
+require_once "comprador/lista-comprador.php";
+
+require_once "imovel/lista-imovel.php";
+
+
 ?>
 
 
