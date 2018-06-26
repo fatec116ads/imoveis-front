@@ -6,14 +6,14 @@
 	<div class="container">
 		<div class="col-md-3" style="float: right; margin-top: 50px">
 			<!-- Link para o botão que abre o modal de inclusão de novo Estado -->
-			<a href="#modalIncluir" data-toggle="modal"
-				data-target="#modalIncluir">
+			<a href="#modalIncluirEstado" data-toggle="modal"
+				data-target="#modalIncluirEstado">
 				<button class="btn btn-success" style="width: 100%">+
 					Inserir novo Estado</button>
 			</a>
 		</div>
 		<!-- INICIO modal de inclusão de Estado -->
-		<div class="modal fade " id="modalIncluir">
+		<div class="modal fade " id="modalIncluirEstado">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -68,16 +68,16 @@
 					</td>
 					<!-- Botão de Editar Estado -->
 					<td align="center"><a
-						href="#modalEditar<?php print_r($estado->uf); ?>"
+						href="#modalEditarEstado<?php print_r($estado->uf); ?>"
 						data-toggle="modal"
-						data-target="#modalEditar<?php print_r($estado->uf); ?>"> <span
+						data-target="#modalEditarEstado<?php print_r($estado->uf); ?>"> <span
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
 					<!-- FIM Lista de todos os estados -->
 
 					<!-- INICIO Modal de Edição de Estado --> 
 						<div class="modal fade "
-							id="modalEditar<?php print_r($estado->uf); ?>">
+							id="modalEditarEstado<?php print_r($estado->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -112,14 +112,14 @@
 					<!-- FIM Modal de Edição de Estado -->
 
 					<!-- Botão de Consulta Estado -->
-					<a href="#modalConsultar<?php print_r($estado->uf); ?>"
+					<a href="#modalConsultarEstado<?php print_r($estado->uf); ?>"
 					data-toggle="modal"
-					data-target="#modalConsultar<?php print_r($estado->uf); ?>"> 
+					data-target="#modalConsultarEstado<?php print_r($estado->uf); ?>"> 
 					<span class="glyphicon glyphicon-search"></span>
 					</a>
 					<!-- INICIO Modal Consulta de Estado -->	
 						<div class="modal fade "
-							id="modalConsultar<?php print_r($estado->uf); ?>">
+							id="modalConsultarEstado<?php print_r($estado->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -146,14 +146,14 @@
 						<!-- FIM Modal de Consulta de Estado -->
 
 					<!-- Botão de Exclusão Estado -->	
-					<a href="#modalExcluir<?php print_r($estado->uf); ?>"
+					<a href="#modalExcluirEstado<?php print_r($estado->uf); ?>"
 					data-toggle="modal"
-					data-target="#modalExcluir<?php print_r($estado->uf); ?>"> 
+					data-target="#modalExcluirEstado<?php print_r($estado->uf); ?>"> 
 					<span class="glyphicon glyphicon-remove"></span>
 					</a>
 					<!-- INICIO Modal de Exclusão de Estado -->
 						<div class="modal fade "
-							id="modalExcluir<?php print_r($estado->uf); ?>">
+							id="modalExcluirEstado<?php print_r($estado->uf); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
