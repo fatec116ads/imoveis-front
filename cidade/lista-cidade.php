@@ -34,6 +34,11 @@
 								<label>Nome:</label> <input name="nmCidade" type="text"
 									class="form-control" id="inputNomeCidade" placeholder="Nome" />
 							</div>
+							<select  class="form-control" name="estado">
+								<?php foreach($estados as $estado) { ?>
+								<option value="<?php echo $estado->uf; ?>"><?php echo $estado->nomeEstado; ?></option>
+								<?php } ?>
+							</select>	
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">Cadastrar</button>
 							</div>
@@ -54,6 +59,7 @@
 				<tr>
 					<th>Código Cidade</th>
 					<th>Nome</th>
+					<th>Estado</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -65,6 +71,9 @@
 					</td>
 					<td>
 						<?php echo $cidade->nmCidade; ?>
+					</td>
+					<td>
+						<?php echo $cidade->estado->uf;  ?>
 					</td>
 					<!-- Botão de Editar Cidade -->
 					<td align="center"><a
@@ -101,6 +110,17 @@
 													value="<?php echo $cidade->nmCidade; ?>" /> <input
 													type="hidden" name="cdCidade" value="<?php echo $cidade->cdCidade; ?>" />
 											</div>
+											<select  class="form-control" name="estado">
+											<?php foreach($estados as $estado) { ?>
+											<option <?php
+
+													if($cidade->estado->uf == $estado->uf) {
+														echo 'selected="selected';
+													}
+
+											 ?> value="<?php echo $estado->uf; ?>"><?php echo $estado->nomeEstado; ?></option>
+											<?php } ?>
+										</select>		
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
 											</div>
@@ -137,8 +157,8 @@
 										<div class="form-group">
 											<label>Nome:</label> <span> <?php print_r($cidade->nmCidade); ?>
 											</span>
-										</div>
-
+										</div><label>Estado:</label>
+									<?php print_r($cidade->estado->nomeEstado); ?>
 									</div>
 								</div>
 							</div>

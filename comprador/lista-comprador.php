@@ -40,7 +40,12 @@
 												<label>Endereço Comprador:</label> <input name="nmEndereco" type="text"
 													class="form-control" id="inputNome" placeholder="ndereço Comprador"
 													 /> 
-											</div>
+											</div><label>Bairro Comprador:</label>
+											<select  class="form-control" name="cidade">
+												<?php foreach($bairros as $bairro) { ?>
+												<option value="<?php echo $bairro->cdBairro; ?>"><?php echo $bairro->nmBairro; ?></option>
+												<?php } ?>
+											</select>	
 											<div class="form-group">
 												<label>CPF Comprador:</label> <input name="nrCpfComprador" type="text"
 													class="form-control" id="inputNome" placeholder="CPF Comprador"
@@ -234,7 +239,10 @@
 
 												<input name="cdComprador" type="hidden" class="form-control"
 													id="inputCdComprador"
-													value="<?php echo $comprador->cdComprador; ?>" /> 
+													value="<?php echo $comprador->cdComprador; ?>" />
+<input name="nmComprador" type="hidden" class="form-control"
+													id="inputNmComprador"
+													value="<?php echo $comprador->nmComprador; ?>" />													
 											</div>
 										</form>
 									</div>

@@ -27,13 +27,18 @@
 						<form action="bairro/incluir-bairro.php" id="form-bairro"
 							method="Post">
 							<div class="form-group">
-								<label>Código Bairro</label> <input name="codBairro" type="text"
+								<label>Código Bairro</label> <input name="cdBairro" type="text"
 									class="form-control" id="inputCodBairro" placeholder="Código Bairro" />
 							</div>
 							<div class="form-group">
 								<label>Nome Bairro:</label> <input name="nmBairro" type="text"
 									class="form-control" id="inputNomeBairro" placeholder="Nome" />
 							</div>
+							<select  class="form-control" name="cidade">
+								<?php foreach($cidades as $cidade) { ?>
+								<option value="<?php echo $cidade->cdCidade; ?>"><?php echo $cidade->nmCidade; ?></option>
+								<?php } ?>
+							</select>	
 							<div class="text-center">
 								<button type="submit" class="btn btn-primary">Cadastrar</button>
 							</div>
@@ -54,6 +59,8 @@
 				<tr>
 					<th>Código Bairro</th>
 					<th>Nome</th>
+					<th>Cidade</th>
+					<th>Estado</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -61,23 +68,29 @@
 				<?php foreach($bairros as $bairro) { ?>
 				<tr>
 					<td>
-						<?php echo $bairro->codBairro; ?>
+						<?php echo $bairro->cdBairro; ?>
 					</td>
 					<td>
 						<?php echo $bairro->nmBairro; ?>
 					</td>
+					<td>
+						<?php echo $bairro->cidade->nmCidade; ?>
+					</td>
+					<td>
+						<?php echo $bairro->cidade->estado->uf; ?>
+					</td>
 					<!-- Botão de Editar Bairro -->
 					<td align="center"><a
-						href="#modalEditarBairro<?php print_r($bairro->codBairro); ?>"
+						href="#modalEditarBairro<?php print_r($bairro->cdBairro); ?>"
 						data-toggle="modal"
-						data-target="#modalEditarBairro<?php print_r($bairro->codBairro); ?>"> <span
+						data-target="#modalEditarBairro<?php print_r($bairro->cdBairro); ?>"> <span
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
 					<!-- FIM Lista de todos os bairros -->
 
 					<!-- INICIO Modal de Edição de Bairro --> 
 						<div class="modal fade "
-							id="modalEditarBairro<?php print_r($bairro->codBairro); ?>">
+							id="modalEditarBairro<?php print_r($bairro->cdBairro); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -93,14 +106,25 @@
 											<div class="form-group">
 												<label>Código Bairro</label> <input name="sigla" type="text" disabled
 													class="form-control" id="inputCodBairro" placeholder="Código Bairro"
-													value="<?php echo $bairro->codBairro; ?>" />
+													value="<?php echo $bairro->cdBairro; ?>" />
 											</div>
 											<div class="form-group">
 												<label>Nome Bairro:</label> <input name="nmBairro" type="text"
 													class="form-control" id="inputNomeBairro" placeholder="Nome"
 													value="<?php echo $bairro->nmBairro; ?>" /> <input
-													type="hidden" name="codBairro" value="<?php echo $bairro->codBairro; ?>" />
+													type="hidden" name="cdBairro" value="<?php echo $bairro->cdBairro; ?>" />
 											</div>
+											<select  class="form-control" name="cidade">
+													<?php foreach($cidades as $cidade) { ?>
+													<option <?php
+
+														if($bairro->cidade->cdCidade == $cidade->cdCidade) {
+															echo 'selected="selected';
+														}
+
+												 ?> value="<?php echo $cidade->cdCidade; ?>"><?php echo $cidade->nmCidade; ?></option>
+													<?php } ?>
+												</select>	
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
 											</div>
@@ -112,14 +136,14 @@
 					<!-- FIM Modal de Edição de Bairro -->
 
 					<!-- Botão de Consulta Bairro -->
-					<a href="#modalConsultarBairro<?php print_r($bairro->codBairro); ?>"
+					<a href="#modalConsultarBairro<?php print_r($bairro->cdBairro); ?>"
 					data-toggle="modal"
-					data-target="#modalConsultarBairro<?php print_r($bairro->codBairro); ?>"> 
+					data-target="#modalConsultarBairro<?php print_r($bairro->cdBairro); ?>"> 
 					<span class="glyphicon glyphicon-search"></span>
 					</a>
 					<!-- INICIO Modal Consulta de Bairro -->	
 						<div class="modal fade "
-							id="modalConsultarBairro<?php print_r($bairro->codBairro); ?>">
+							id="modalConsultarBairro<?php print_r($bairro->cdBairro); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -131,14 +155,14 @@
 									</div>
 									<div class="modal-body">
 										<div class="form-group">
-											<label>Código Bairro</label> <span> <?php print_r($bairro->codBairro); ?>
+											<label>Código Bairro</label> <span> <?php print_r($bairro->cdBairro); ?>
 											</span>
 										</div>
 										<div class="form-group">
 											<label>Nome Bairro:</label> <span> <?php print_r($bairro->nmBairro); ?>
 											</span>
-										</div>
-
+										</div><label>Nome Cidade:</label>
+										 <span> <?php print_r($bairro->cidade->nmCidade); ?></span>
 									</div>
 								</div>
 							</div>
@@ -146,21 +170,21 @@
 						<!-- FIM Modal de Consulta de Bairro -->
 
 					<!-- Botão de Exclusão Bairro -->	
-					<a href="#modalExcluirBairro<?php print_r($bairro->codBairro); ?>"
+					<a href="#modalExcluirBairro<?php print_r($bairro->cdBairro); ?>"
 					data-toggle="modal"
-					data-target="#modalExcluirBairro<?php print_r($bairro->codBairro); ?>"> 
+					data-target="#modalExcluirBairro<?php print_r($bairro->cdBairro); ?>"> 
 					<span class="glyphicon glyphicon-remove"></span>
 					</a>
 					<!-- INICIO Modal de Exclusão de Bairro -->
 						<div class="modal fade "
-							id="modalExcluirBairro<?php print_r($bairro->codBairro); ?>">
+							id="modalExcluirBairro<?php print_r($bairro->cdBairro); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h3 class="modal-title" id="exampleModalLabel">Bairro</h3>
 										<h5 class="modal-title" id="exampleModalLabel">
 											Você tem certeza que deseja excluir o bairro
-											<?php echo $bairro->codBairro; ?>
+											<?php echo $bairro->cdBairro; ?>
 											?
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
@@ -184,7 +208,7 @@
 												<input name="nmBairro" type="hidden" class="form-control"
 													id="inputNomeBairro" placeholder="Nome"
 													value="<?php echo $bairro->nmBairro; ?>" /> <input
-													type="hidden" name="codBairro" value="<?php echo $bairro->codBairro; ?>" />
+													type="hidden" name="cdBairro" value="<?php echo $bairro->cdBairro; ?>" />
 											</div>
 										</form>
 									</div>

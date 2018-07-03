@@ -15,6 +15,7 @@ require_once "comprador/lista-comprador.php";
 
 require_once "imovel/lista-imovel.php";
 
+require_once "faixa-imovel/lista-faixa-imovel.php";
 
 ?>
 

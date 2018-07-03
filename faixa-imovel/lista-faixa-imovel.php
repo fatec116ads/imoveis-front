@@ -35,8 +35,8 @@
 									class="form-control" id="inputnmFaixa" placeholder="nmFaixa" />
 							</div>
 							<div class="form-group">
-								<label>Valor Minino</label> <input name="vlMinino" type="text"
-									class="form-control" id="inputvlMinino" placeholder="vlMinino" />
+								<label>Valor Minino</label> <input name="vlMinimo" type="text"
+									class="form-control" id="inputvlMinimo" placeholder="vlMinimo" />
 							</div>
 							<div class="form-group">
 								<label>Valor Maximo</label> <input name="vlMaximo" type="text"
@@ -77,7 +77,7 @@
 						<?php echo $faixaImovel->nmFaixa; ?>
 					</td>
 					<td>
-						<?php echo $faixaImovel->vlMinino; ?>
+						<?php echo $faixaImovel->vlMinimo; ?>
 					</td>
 					<td>
 						<?php echo $faixaImovel->vlMaximo; ?>
@@ -88,6 +88,16 @@
 							class="glyphicon glyphicon-pencil"></span>
 					</a>
 					<!-- FIM Lista de todos as faixas de imovel -->
+					<a href="#modalConsultarfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"
+					data-toggle="modal"
+					data-target="#modalConsultarfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"> 
+					<span class="glyphicon glyphicon-search"></span>
+					</a>
+					<a href="#modalExcluirfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"
+					data-toggle="modal"
+					data-target="#modalExcluirfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"> 
+					<span class="glyphicon glyphicon-remove"></span>
+					</a>
 
 					<!-- INICIO Modal de Edicao de Faixa Imovel --> 
 						<div class="modal fade "
@@ -102,7 +112,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="faixaImovel/alterar-faixa-imovel.php" id="form-faixa-imovel"
+										<form action="faixa-imovel/alterar-faixa-imovel.php" id="form-faixa-imovel"
 											method="Post">
 											<div class="form-group">
 												<label>Codigo</label> <input name="cdFaixa" type="text" disabled
@@ -112,17 +122,17 @@
 											<div class="form-group">
 												<label>Nome</label> <input name="nmFaixa" type="text"
 													class="form-control" id="inputnmFaixa" placeholder="nmFaixa"
-													value="<?php echo $faixaImovel->nmFaixa; ?>" /> <input
+													value="<?php echo $faixaImovel->nmFaixa; ?>" /> 
 											</div>
 											<div class="form-group">
-												<label>Valor Minimo</label> <input name="vlMinimo" type="text" disabled
+												<label>Valor Minimo</label> <input name="vlMinimo" type="text" 
 													class="form-control" id="inputvlMinimo" placeholder="vlMinimo"
 													value="<?php echo $faixaImovel->vlMinimo; ?>" />
 											</div>
 											<div class="form-group">
 												<label>Valor Maximo</label> <input name="vlMaximo" type="text"
 													class="form-control" id="inputvlMaximo" placeholder="vlMaximo"
-													value="<?php echo $faixaImovel->vlMaximo; ?>" /> <input
+													value="<?php echo $faixaImovel->vlMaximo; ?>" /> 
 											</div>
 											<div class="text-center">
 												<button type="submit" class="btn btn-primary">Alterar</button>
@@ -133,15 +143,10 @@
 							</div>
 						</div> 
 					<!-- FIM Modal de Edicao de Faixa Imovel -->
-
 					<!-- Botao de Consulta Faixa Imovel -->
-					<a href="#modalConsultarfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"
-					data-toggle="modal"
-					data-target="#modalConsultarfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>"> 
-					<span class="glyphicon glyphicon-search"></span>
-					</a>
+					
 					<!-- INICIO Modal Consulta de Faixa Imovel -->	
-						<div class="modal fade "
+						<div class="modal fade " 
 							id="modalConsultarfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -174,24 +179,19 @@
 							</div>
 						</div> 
 						<!-- FIM Modal de Consulta de Faixa Imovel -->
-
-					<!-- Botao de Exclusao Faixa Imovel -->	
-					<a href="#modalExcluirfaixaImovel<?php print_r($faixaImovel); ?>"
-					data-toggle="modal"
-					data-target="#modalExcluirfaixaImovel<?php print_r($faixaImovel); ?>"> 
-					<span class="glyphicon glyphicon-remove"></span>
-					</a>
+						<!-- Botao de Exclusao Faixa Imovel -->	
+			
 					<!-- INICIO Modal de Exclusao de Faixa Imovel -->
 						<div class="modal fade "
-							id="modalExcluirfaixaImovel<?php print_r($faixaImovel); ?>">
+							id="modalExcluirfaixaImovel<?php print_r($faixaImovel->cdFaixa); ?>">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
 										<h3 class="modal-title" id="exampleModalLabel">Faixa Imovel</h3>
 										<h5 class="modal-title" id="exampleModalLabel">
 											Voce tem certeza que deseja excluir a faixa imovel?
-											<?php echo $faixaImovel; ?>
-											?
+											<?php echo $faixaImovel->cdFaixa; ?>
+											
 										</h5>
 										<button type="button" class="close" data-dismiss="modal"
 											aria-label="Close">
@@ -199,7 +199,7 @@
 										</button>
 									</div>
 									<div class="modal-body">
-										<form action="faixaImovel/excluir-faixaImovel.php" id="form-faixaImovel"
+										<form action="faixa-imovel/excluir-faixa-imovel.php" id="form-faixaImovel"
 											method="Post">
 											<div class="form-group">
 												<div class="text-center">
@@ -214,7 +214,7 @@
 												<input name="nmFaixa" type="hidden" class="form-control"
 													id="inputnmFaixa" placeholder="nmFaixa"
 													value="<?php echo $faixaImovel->nmFaixa; ?>" /> <input
-													type="hidden" name="cdFaixa" value="<?php echo $faixaImovel; ?>" />
+													type="hidden" name="cdFaixa" value="<?php echo $faixaImovel->cdFaixa; ?>" />
 											</div>
 										</form>
 									</div>
@@ -222,7 +222,6 @@
 							</div>
 						</div>
 					<!-- FIM Modal de Exclusao de Faixa Imovel -->
-					</td>
 				</tr>
 				<?php } ?>
 			</tbody>

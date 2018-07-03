@@ -29,7 +29,7 @@
 	   <li><a href="#comprador" role="tab" data-toggle="tab">Comprador</a></li>
 	   
 	   <li><a href="#imovel" role="tab" data-toggle="tab">Imóvel</a></li>
-	   
+	   <li><a href="#faixa-imovel" role="tab" data-toggle="tab">Faixa Imóvel</a></li>
       </ul>
 
       <div class="tab-content">
